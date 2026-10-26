@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "Name: $NAME"
-echo "City: $CITY"
+echo "I am in: $present_country"
+echo "PID of $0: $$"
