@@ -17,9 +17,16 @@ usage(){
     exit 1
 }
 
+# Check whether user passed source directory or not?
 
 if [ -z "$source_dir" ]; then
   echo "ERROR:: Missing parameters. Please provide source directory path."
   usage
+fi
+
+# Check source directory exists or not?
+
+if [ ! -d "$source_dir" ]; then
+   echo -e "${R}ERROR:: $source_dir does not exist${N}"
 fi
 
