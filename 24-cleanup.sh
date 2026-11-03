@@ -39,9 +39,10 @@ if [ -z "$files_to_delete" ]; then
     exit 0
 fi
 
+# If found, delete the file and print the deleted file name on the screen
 while IFS= read -r line
 do
     echo "File is going to be deleted: $line"
-    rm -f "$line"
+    rm -f $line
     echo "$line file is deleted"
 done <<< "$files_to_delete" # <<< means input as a variable
