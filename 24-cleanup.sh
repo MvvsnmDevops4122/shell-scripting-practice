@@ -42,4 +42,6 @@ fi
 while IFS= read -r line
 do
     echo "File is going to be deleted: $line"
+    rm -f "$line"
+    echo "$line file is deleted"
 done <<< "$files_to_delete" # <<< means input as a variable
