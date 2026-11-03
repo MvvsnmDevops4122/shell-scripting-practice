@@ -12,26 +12,25 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+# Function to print usage of the script
 usage(){
     echo -e "${R}USAGE:: $0 [SOURCE_DIR] [days(Optional, default to 14 days)]${N}"
     exit 1
 }
 
 # Check whether user passed source directory or not?
-
 if [ -z "$source_dir" ]; then
   echo "ERROR:: Missing parameters. Please provide source directory path."
   usage
 fi
 
 # Check source directory exists or not?
-
 if [ ! -d "$source_dir" ]; then
    echo -e "${R}ERROR:: $source_dir does not exist${N}"
+   exit 1
 fi
 
 # find the .log files older than 14 days in the source directory.
-
 echo "Scanning files older than $days in $source_dir"
 files_to_delete=$(find $source_dir -name "*.log" -type f -mtime +$days)
 
