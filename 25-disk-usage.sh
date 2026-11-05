@@ -6,7 +6,7 @@ disk_usage=$(df -hT | grep -v Filesystem)
 # Execute the df command to retrieve disk utilization details.
 while IFS= read -r line; 
 do
-   echo "$line"  
+   usage=$(echo "$line" | awk '{print $6}' | cut -d'%' -f1) 
 done <<< "$disk_usage"
 
 #Read the command output line by line.
