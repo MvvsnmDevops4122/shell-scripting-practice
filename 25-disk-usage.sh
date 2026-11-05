@@ -14,7 +14,7 @@ do
    # Check whether the disk usage exceeds the threshold.
    # If usage is greater than the threshold, identify the partition.
    if [ "$usage" -ge "$usage_threshold" ]; then
-      message+="High disk usage on ${partition}: ${usage}\n"
+      message+="High disk usage on ${partition}: ${usage} <br>"
    fi
 done <<< "$disk_usage"
 
