@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -13,21 +15,25 @@ usage(){
     exit 1
 }
 
+# Check whether user passed source directory and destination directory or  not?
 if [ -z "$source_dir" ] || [ -z "$dest_dir" ]; then
     echo "Either source or destination directory are missing"
     usage
 fi
 
+# check source directory exits or not
 if [ ! -d "$source_dir" ]; then
     echo "Source Directory: $source_dir does not exist"
     exit 1
 fi
 
+# check destination directory exits or not
 if [ ! -d "$dest_dir" ]; then
     echo "Destination Directory: $dest_dir does not exist"
     exit 1
 fi
 
+# find the .log files older than 14 days in the source directory.
 echo "Scanning files older than $days days in $source_dir"
 files_to_archive=$(find $source_dir -name "*.log" -type f -mtime +$days)
 
@@ -40,6 +46,7 @@ timestamp=$(date +%Y-%m-%d-%H-%M-%S)
 
 file_name="$dest_dir/logs-$timestamp.tar.gz"
 
+# create log archieve
 tar -czf $file_name $files_to_archive
 
 if [ $? -ne 0 ]; then
