@@ -2,7 +2,7 @@
 
 # Execute the df command to retrieve disk utilization details.
 disk_usage=$(df -hT | grep -v Filesystem)
-
+server_ip=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 usage_threshold=20
 
 # Read the command output line by line.
@@ -14,11 +14,12 @@ do
    # Check whether the disk usage exceeds the threshold.
    # If usage is greater than the threshold, identify the partition.
    if [ "$usage" -ge "$usage_threshold" ]; then
-      message+="High disk usage on ${partition}: ${usage}%\n"
+      message+="High disk usage on ${partition}: ${usage}\n"
    fi
 done <<< "$disk_usage"
 
-echo -e "$message"
+#echo -e "$message"
 
-# If usage is greater than the threshold, identify the partition.
 # Send an email alert with the partition details and disk usage percentage.
+sh mail.sh "DevOps Team" "$server_ip" "High Disk Usage" "$message" "satyamolleti4599@gmail.com" "WARNING: High Disk Usage Alert"
+

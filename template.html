@@ -1,0 +1,8 @@
+<p>Hi TO_TEAM,</p>
+<p>&nbsp;</p>
+<p>There is an <span style="color: #800000;"><strong>ALERT_TYPE</strong></span> in the system. Please find the details below.</p>
+<p><strong>Server IP: SERVER_IP</strong></p>
+<p><strong>MESSAGE_BODY</strong></p>
+<p>&nbsp;</p>
+<p>Regards,</p>
+<p>Monitoring Team</p>
