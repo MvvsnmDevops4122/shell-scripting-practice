@@ -21,5 +21,5 @@ done <<< "$disk_usage"
 #echo -e "$message"
 
 # Send an email alert with the partition details and disk usage percentage.
-sh 26-mail.sh "DevOps Team" "$server_ip" "High Disk Usage" "$message" "satyamolleti4599@gmail.com" "WARNING: High Disk Usage Alert"
+source 26-mail.sh "DevOps Team" "$server_ip" "High Disk Usage" "$message" "satyamolleti4599@gmail.com" "WARNING: High Disk Usage Alert"
 

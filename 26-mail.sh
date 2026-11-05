@@ -6,9 +6,11 @@ message=$4
 to_address=$5
 subject=$6
 
+# Escape special characters in the message to prevent issues in the email body.
 final_message=$(echo "$message" | sed 's/[.|$*^\\\/]/\\&/g')
 final_body=$(sed -e "s/TO_TEAM/$team_name/g" -e "s/ALERT_TYPE/$alert_type/g" -e "s/SERVER_IP/$server_ip/g" -e "s/MESSAGE_BODY/$final_message/g" template.html)
 
+# Send the email using msmtp with the constructed email body.
 {
 echo "To: $to_address"
 echo "Subject: $subject"
